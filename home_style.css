@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Zen+Tokyo+Zoo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+
+
+:root {
+    --custom-glow: #ff0059; /* Define new custom color variable */
+    --custom-glow2: #ffc802; /* Define new custom color variable */
+}
+
+body {
+    background-color: #18002e;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header .neons {
+    width: 30%;    
+    margin: 0;
+}
+
+#header .neons hr {
+    width: 100%;
+    margin: 25px 0;
+    height: 5px;
+    background-color: #fffbf0; 
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--custom-glow2), 0 0 20px var(--custom-glow2), 0 0 30px var(--custom-glow2); /* Glow effect */
+}
+
+#Title {
+    text-align: center;
+    font-size: 100px;
+    color: rgb(255, 214, 242);
+    margin: 40px 0 50px 0;
+    font-family: "Zen Tokyo Zoo", cursive;
+    text-shadow: 0 0 10px var(--custom-glow), 0 0 20px var(--custom-glow), 0 0 30px var(--custom-glow), 0 0 40px var(--custom-glow), 0 0 50px var(--custom-glow), 0 0 60px var(--custom-glow); /* Use the custom color variable for glow effect */    
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+}
+
+#movie_list {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(244, 236, 220);
+    min-width: 75%;
+    width: 75%;
+    padding: 30px;
+    
+}
