@@ -44,7 +44,7 @@ body {
     font-size: 100px;
     color: rgb(255, 214, 242);
     margin: 40px 0 50px 0;
-    font-family: "Zen Tokyo Zoo", cursive;
+    font-family: "Zen Tokyo Zoo";
     text-shadow: 0 0 10px var(--custom-glow), 0 0 20px var(--custom-glow), 0 0 30px var(--custom-glow), 0 0 40px var(--custom-glow), 0 0 50px var(--custom-glow), 0 0 60px var(--custom-glow); /* Use the custom color variable for glow effect */    
     font-weight: normal;
     font-style: normal;
@@ -67,4 +67,35 @@ body {
     width: 75%;
     padding: 30px;
     
+}
+
+#draw_btn{
+    margin: 0;
+    padding: 10px;
+    font-size: 40px;
+    background-color: #e1bc38;
+}
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+    color: #fffbf0;
+    background-color: #18002e;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--custom-glow), 0 0 20px var(--custom-glow), 0 0 30px var(--custom-glow), 0 0 40px var(--custom-glow), 0 0 50px var(--custom-glow), 0 0 60px var(--custom-glow); /* Use the custom color variable for glow effect */
+}
+
+#movie_table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 60%;
+    color: #fffbf0;
 }
