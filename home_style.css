@@ -69,33 +69,17 @@ body {
     
 }
 
-#draw_btn{
+#draw_button{
     margin: 0;
     padding: 10px;
-    font-size: 40px;
+    font-size: 30px;
     background-color: #e1bc38;
-}
-
-.movie {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 30%;
-    color: #fffbf0;
-    background-color: #18002e;
-    padding: 10px;
+    border: none;
     border-radius: 10px;
-    box-shadow: 0 0 10px var(--custom-glow), 0 0 20px var(--custom-glow), 0 0 30px var(--custom-glow), 0 0 40px var(--custom-glow), 0 0 50px var(--custom-glow), 0 0 60px var(--custom-glow); /* Use the custom color variable for glow effect */
+    transition: all 0.2s ease;
 }
 
-#movie_table {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 60%;
-    color: #fffbf0;
+#draw_button:hover {
+    scale: 1.1;
+    cursor: pointer;
 }
