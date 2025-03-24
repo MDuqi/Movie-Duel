@@ -43,6 +43,12 @@
 
     //====================================================================================================
 
+    // Draw Animation
+    function drawAnimation(themes) {
+        populateCarousel(themes);
+        setInterval(rotateThemes, 50);
+    }
+
     function displayTheme(theme, index) {
         const HTMLString = `${index}: ${theme}<br>`;
         const targetInputContainer = document.getElementById("theme_list");
@@ -70,13 +76,18 @@
     
     fetchMovieList().then(({ matrix, numberOfRows }) => {
         const themes = matrix.map(row => row[0]);
-        // Initialize
+        // Populate carousel
         populateCarousel(themes);
-        setInterval(rotateThemes, 500); // Rotate every 2 seconds
+        setInterval(rotateThemes, 500);
+        // Event listener
         const drawButton = document.getElementById("draw_button");
         drawButton.addEventListener("click", () => {
-            drawMovie(themes, numberOfRows);
-            showAcceptbtn();
+            drawAnimation(themes); // Start animation immediately
+        
+            setTimeout(() => {
+                drawMovie(themes, numberOfRows); // Run after 5s
+                showAcceptbtn(); 
+            }, 2000);
         });
     });
     
