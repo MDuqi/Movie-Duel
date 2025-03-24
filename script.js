@@ -71,8 +71,6 @@
        
     }
     
-    
-    
     // Initialize
     populateCarousel();
     setInterval(rotateWords, 500); // Rotate every 2 seconds

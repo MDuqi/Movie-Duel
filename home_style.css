@@ -92,21 +92,7 @@ body {
 
 
 /* Carousel */
-
-.carousel-container {
-    width: 70%; /* Adjust as needed */
-    height: 50px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    background: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-}
+ 
 
 .carousel {
     display: flex;
