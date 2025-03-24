@@ -69,7 +69,7 @@
         const themes = matrix.map(row => row[0]);
         // Initialize
         populateCarousel(themes);
-        setInterval(rotateWords, 500); // Rotate every 2 seconds
+        setInterval(rotateThemes, 500); // Rotate every 2 seconds
         const drawButton = document.getElementById("draw_button");
         drawButton.addEventListener("click", () => drawMovie(themes, numberOfRows));
     });
