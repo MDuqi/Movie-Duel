@@ -1,5 +1,5 @@
 
-    
+    //fecthing the movie list from the csv file
     function fetchMovieList() {
         return fetch('MovieDuel_List.csv')
             .then(response => response.text())
@@ -12,9 +12,40 @@
             .catch(error => console.error("Error loading CSV:", error));
     }
 
-    function displayMovie(movie, index) {
-        const HTMLString = `${index}: ${movie}<br>`;
-        const targetInputContainer = document.getElementById("movie_list");
+    //====================================================================================================
+    // Carousel
+    const carousel = document.querySelector(".carousel");
+
+    // Populate the carousel
+    function populateCarousel(themes) {
+        themes.forEach(theme => {
+            const span = document.createElement("span");
+            span.textContent = theme;
+            carousel.appendChild(span);
+        });
+    }
+    
+    // Rotate words dynamically
+    function rotateThemes() {
+        const firstTheme = carousel.firstElementChild;
+    
+        // Slide out the first word smoothly
+        firstTheme.style.transition = "transform ease-out";
+        firstTheme.style.transform = "translateX(-100%)";
+    
+       
+            // Move first word to the end and reset position
+            carousel.appendChild(firstTheme);
+            firstTheme.style.transition = "none";
+            firstTheme.style.transform = "translateX(0)";
+       
+    }
+
+    //====================================================================================================
+
+    function displayTheme(theme, index) {
+        const HTMLString = `${index}: ${theme}<br>`;
+        const targetInputContainer = document.getElementById("theme_list");
         targetInputContainer.innerHTML = HTMLString;
     }
 
@@ -22,56 +53,30 @@
         return Math.floor(Math.random() * max);
     }
 
-    function drawMovie(matrix, numberOfRows) {
+    function drawMovie(themes, numberOfRows) {
         const randomIndex = generateRandomNumber(numberOfRows);
-        const randomMovie = matrix[randomIndex][0];
-        displayMovie(randomMovie, randomIndex);
+        const randomTheme = themes[randomIndex];
+        displayTheme(randomTheme, randomIndex);
     }
 
+
+
+    //====================================================================================================
+    
+    
+    
     fetchMovieList().then(({ matrix, numberOfRows }) => {
+        const themes = matrix.map(row => row[0]);
+        // Initialize
+        populateCarousel(themes);
+        setInterval(rotateWords, 500); // Rotate every 2 seconds
         const drawButton = document.getElementById("draw_button");
-        drawButton.addEventListener("click", () => drawMovie(matrix, numberOfRows));
+        drawButton.addEventListener("click", () => drawMovie(themes, numberOfRows));
     });
     
 
-    //====================================================================================================
-
     
-    const words = [
-        "Innovation", "Creativity", "Technology", 
-        "Movies", "Art", "Science", , "Design",
-        "Music", "Photography", "Travel", "Food",
-        
-    ];
     
-    const carousel = document.querySelector(".carousel");
     
-    // Populate the carousel
-    function populateCarousel() {
-        words.forEach(word => {
-            const span = document.createElement("span");
-            span.textContent = word;
-            carousel.appendChild(span);
-        });
-    }
     
-    // Rotate words dynamically
-    function rotateWords() {
-        const firstWord = carousel.firstElementChild;
-    
-        // Slide out the first word smoothly
-        firstWord.style.transition = "transform ease-out";
-        firstWord.style.transform = "translateX(-100%)";
-    
-       
-            // Move first word to the end and reset position
-            carousel.appendChild(firstWord);
-            firstWord.style.transition = "none";
-            firstWord.style.transform = "translateX(0)";
-       
-    }
-    
-    // Initialize
-    populateCarousel();
-    setInterval(rotateWords, 500); // Rotate every 2 seconds
     

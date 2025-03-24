@@ -59,7 +59,7 @@ body {
     gap: 30px;
 }
 
-#movie_list {
+#theme_list {
     display: flex;
     justify-content: center;
     background-color: rgb(244, 236, 220);
