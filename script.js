@@ -59,7 +59,10 @@
         displayTheme(randomTheme, randomIndex);
     }
 
-
+    function showAcceptbtn() {
+        const acceptButton = document.getElementById("accept_button");
+        acceptButton.style.display = "block";
+    }
 
     //====================================================================================================
     
@@ -71,7 +74,10 @@
         populateCarousel(themes);
         setInterval(rotateThemes, 500); // Rotate every 2 seconds
         const drawButton = document.getElementById("draw_button");
-        drawButton.addEventListener("click", () => drawMovie(themes, numberOfRows));
+        drawButton.addEventListener("click", () => {
+            drawMovie(themes, numberOfRows);
+            showAcceptbtn();
+        });
     });
     
 

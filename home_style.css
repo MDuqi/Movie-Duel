@@ -93,7 +93,7 @@ body {
 #btns {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
 
 }
 
@@ -118,7 +118,10 @@ body {
 }
 
 #accept_button {
+    transition: all 0.2s ease;
     display: none;
 }
+
+
 
 
