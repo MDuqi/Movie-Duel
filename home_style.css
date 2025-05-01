@@ -123,3 +123,26 @@ body {
 }
 
 
+#containerMovie {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 30px;
+}
+
+/* Movie Cells */
+
+.movie{
+    display: flex;
+    flex-direction: column;
+    width: 20%; ;
+    color: #fffbf0;
+    background-color: red;
+}
+
+.movie img{
+    width: 15%
+
+
+}
+
