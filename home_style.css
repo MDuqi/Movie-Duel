@@ -13,7 +13,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: 250vh;
 }
 
 #header {
@@ -123,11 +123,12 @@ body {
 }
 
 
-#containerMovie {
+#container_movie {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     width: 100%;
-    gap: 30px;
+    justify-content: space-around;
 }
 
 /* Movie Cells */
@@ -135,14 +136,17 @@ body {
 .movie{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     width: 20%; ;
     color: #fffbf0;
-    background-color: red;
+
 }
 
 .movie img{
-    width: 15%
-
-
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
 }
 
