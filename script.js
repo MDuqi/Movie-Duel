@@ -13,20 +13,22 @@
     }
 
     //====================================================================================================
-    // Carousel
-    const carousel = document.querySelector(".carousel");
 
     // Populate the carousel
-    function populateCarousel(themes) {
+    function populateCarousel(carousel, themes) {
+        // Wipes all content (faster than innerHTML)
+        carousel.textContent = "";
+        
+        // Add new spans
         themes.forEach(theme => {
             const span = document.createElement("span");
             span.textContent = theme;
             carousel.appendChild(span);
         });
     }
-    
+
     // Rotate words dynamically
-    function rotateThemes() {
+    function rotateThemes(carousel) {
         const firstTheme = carousel.firstElementChild;
     
         // Slide out the first word smoothly
@@ -44,50 +46,72 @@
     //====================================================================================================
 
     // Draw Animation
-    function drawAnimation(themes) {
-        populateCarousel(themes);
-        setInterval(rotateThemes, 50);
+    function drawAnimation(carousel, themes) {
+        
+        // Reset carousel to ALL themes (required for animation)
+        populateCarousel(carousel, themes); 
+        rotationInterval = setInterval(()=>rotateThemes(carousel), 50); // Fast spin
     }
 
-    function displayTheme(theme, index) {
+    function displayTheme(carousel, theme, index) {
         const HTMLString = `${index}: ${theme}<br>`;
-        const targetInputContainer = document.getElementById("theme_list");
-        targetInputContainer.innerHTML = HTMLString;
+        carousel.innerHTML = HTMLString;
     }
 
     function generateRandomNumber(max) {
         return Math.floor(Math.random() * max);
     }
 
-    function drawMovie(themes, numberOfRows) {
+    function drawMovie(carousel, themes, numberOfRows) {
         const randomIndex = generateRandomNumber(numberOfRows);
         const randomTheme = themes[randomIndex];
-        displayTheme(randomTheme, randomIndex);
+        displayTheme(carousel, randomTheme, randomIndex);
+        return randomIndex, randomTheme;
     }
 
-    function showAcceptbtn() {
-        const acceptButton = document.getElementById("accept_button");
+    function showAcceptbtn(acceptButton) {
         acceptButton.style.display = "block";
     }
 
     //====================================================================================================
     
     
-    
     fetchMovieList().then(({ matrix, numberOfRows }) => {
         const themes = matrix.map(row => row[0]);
-        // Populate carousel
-        populateCarousel(themes);
-        setInterval(rotateThemes, 500);
-        // Event listener
+        
+        const containerDraw = document.querySelector(".container_draw");
+        
+        const carousel = document.querySelector(".carousel");
+        const acceptButton = document.getElementById("accept_button");
         const drawButton = document.getElementById("draw_button");
+
+        
+        // Populate carousel
+        populateCarousel(carousel,themes);
+        setInterval(() => rotateThemes(carousel), 500);
+        let randomIndex, randomTheme;
+
+        
+        
+        // Event listener for the draw button
         drawButton.addEventListener("click", () => {
-            drawAnimation(themes); // Start animation immediately
+            drawAnimation(carousel,themes); // Start animation immediately
         
             setTimeout(() => {
-                drawMovie(themes, numberOfRows); // Run after 5s
-                showAcceptbtn(); 
+                randomIndex, randomTheme=drawMovie(carousel,themes, numberOfRows); 
+                showAcceptbtn(acceptButton); 
             }, 2000);
+        });
+       
+        // Event listener for the accept button
+        document.addEventListener("click", () => {
+            if (acceptButton) {
+                acceptButton.addEventListener("click", () => {
+                    carousel.innerHTML = `You have selected: ${randomTheme}`;
+
+
+                });
+            }
         });
     });
     
