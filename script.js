@@ -79,7 +79,8 @@
     fetchMovieList().then(({ matrix, numberOfRows }) => {
         const themes = matrix.map(row => row[0]);
         
-        const containerDraw = document.querySelector(".container_draw");
+        const containerDraw = document.querySelector("container_draw");
+        const containerMovie = document.querySelector("container_movie");
         
         const carousel = document.querySelector(".carousel");
         const acceptButton = document.getElementById("accept_button");
@@ -107,8 +108,7 @@
         document.addEventListener("click", () => {
             if (acceptButton) {
                 acceptButton.addEventListener("click", () => {
-                    carousel.innerHTML = `You have selected: ${randomTheme}`;
-
+                   
 
                 });
             }

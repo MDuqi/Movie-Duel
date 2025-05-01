@@ -129,6 +129,7 @@ body {
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
+    display: none;
 }
 
 /* Movie Cells */
