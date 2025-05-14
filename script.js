@@ -66,7 +66,7 @@
         const randomIndex = generateRandomNumber(numberOfRows);
         const randomTheme = themes[randomIndex];
         displayTheme(carousel, randomTheme, randomIndex);
-        return randomIndex, randomTheme;
+        return [randomIndex, randomTheme];
     }
 
     function showAcceptbtn(acceptButton) {
@@ -79,9 +79,9 @@
     fetchMovieList().then(({ matrix, numberOfRows }) => {
         const themes = matrix.map(row => row[0]);
         
-        const containerDraw = document.querySelector("container_draw");
-        const containerMovie = document.querySelector("container_movie");
-        
+        const containerDraw = document.getElementById("container_draw");
+        const containerMovie = document.getElementById("container_movie");
+    
         const carousel = document.querySelector(".carousel");
         const acceptButton = document.getElementById("accept_button");
         const drawButton = document.getElementById("draw_button");
@@ -99,19 +99,18 @@
             drawAnimation(carousel,themes); // Start animation immediately
         
             setTimeout(() => {
-                randomIndex, randomTheme=drawMovie(carousel,themes, numberOfRows); 
+                [randomIndex, randomTheme]=drawMovie(carousel,themes, numberOfRows); 
                 showAcceptbtn(acceptButton); 
             }, 2000);
+            
         });
        
         // Event listener for the accept button
-        document.addEventListener("click", () => {
-            if (acceptButton) {
-                acceptButton.addEventListener("click", () => {
-                   
-
-                });
-            }
+        acceptButton.addEventListener("click", () => {
+            containerDraw.style.display = "none"; // Hide the draw container
+            containerMovie.style.display = "flex";
+            //const movie1H3 = document.getElementById("movie1").querySelector("h3");
+            //movie1H3.innerHTML = themes[randomIndex, 1];
         });
     });
     
