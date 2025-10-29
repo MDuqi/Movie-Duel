@@ -73,12 +73,20 @@
         acceptButton.style.display = "block";
     }
 
+    // Show title and poster of the selected movies
+    function showMovieDetails(movieData, divMovie) {
+        const movieTitle = movieData;
+        divMovie.querySelector("H3").textContent = movieTitle;
+    }
+
     //====================================================================================================
     
     
     fetchMovieList().then(({ matrix, numberOfRows }) => {
         const themes = matrix.map(row => row[0]);
-        
+        const movies1 = matrix.map(row => row[1]);
+        const movies2 = matrix.map(row => row[2]);
+
         const containerDraw = document.getElementById("container_draw");
         const containerMovie = document.getElementById("container_movie");
     
@@ -109,14 +117,12 @@
         acceptButton.addEventListener("click", () => {
             containerDraw.style.display = "none"; // Hide the draw container
             containerMovie.style.display = "flex";
-            //const movie1H3 = document.getElementById("movie1").querySelector("h3");
-            //movie1H3.innerHTML = themes[randomIndex, 1];
-        });
-    });
-    
+            const divMovie1 = document.getElementById("movie1");
+            const divMovie2 = document.getElementById("movie2");
 
+            showMovieDetails(movies1[randomIndex], divMovie1);
+            showMovieDetails(movies2[randomIndex], divMovie2);
+
+        });
     
-    
-    
-    
-    
+    });
